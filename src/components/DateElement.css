@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+.date-element {
+  background-color: rgb(38, 51, 66);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  transition: 0.5s;
+  border: 1px solid transparent;
+  align-items: center;
+  justify-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.date-element:hover {
+  border-color: blanchedalmond;
+  border-style: solid;
+  transform: scale(1.03);
+}
+.current-date {
+  background-color: rgb(77, 101, 128);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  transition: 0.5s;
+  border: 1px solid transparent;
+  align-items: center;
+  justify-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.current-date:hover {
+  border-color: blanchedalmond;
+  border-style: solid;
+  transform: scale(1.03);
+}
