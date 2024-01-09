@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <>
-      <div className="appbg">
+      <div className="app-bg">
         <div
           style={{
             display: "flex",

@@ -58,3 +58,7 @@ body {
   border-style: solid;
   transform: scale(1.03);
 }
+.section:active {
+  transform: scale(0.95);
+  background-color: rgb(25, 29, 31);
+}
