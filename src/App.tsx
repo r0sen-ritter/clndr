@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "./components/Navbar";
 import Leftbar from "./components/Leftbar";
 import Viewport from "./components/Viewport";
