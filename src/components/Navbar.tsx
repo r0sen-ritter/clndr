@@ -1,8 +1,9 @@
 import React from "react";
-import "./Navbar.css";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import { addMonths, subMonths, format } from "date-fns";
+import { TbCurrentLocation } from "react-icons/tb";
+import { addMonths, subMonths, format, startOfMonth } from "date-fns";
+import "./Navbar.css";
 
 interface NavbarProps {
   date: Date;
@@ -16,6 +17,9 @@ const Navbar: React.FC<NavbarProps> = ({ date, setDate }) => {
   const clickForwardHandler = () => {
     setDate(addMonths(date, 1));
   };
+  const clickTodayHandler = () => {
+    setDate(startOfMonth(new Date()));
+  };
 
   return (
     <div className="navbar">
@@ -28,6 +32,11 @@ const Navbar: React.FC<NavbarProps> = ({ date, setDate }) => {
       <div className="section">
         <button className="btn" onClick={clickForwardHandler}>
           <FaChevronRight />
+        </button>
+      </div>
+      <div className="section">
+        <button className="btn" onClick={clickTodayHandler}>
+          <TbCurrentLocation />
         </button>
       </div>
     </div>
