@@ -1,6 +1,6 @@
 import React from "react";
 import "./DateElement.css";
-import { getDay, getDate, getMonth } from "date-fns";
+import { getDay, getDate, getMonth, isToday } from "date-fns";
 
 interface DateElementProps {
   date: Date;
@@ -24,8 +24,9 @@ let months = [
 ];
 
 const DateElement: React.FC<DateElementProps> = ({ date, index }) => {
+  const isCurrentDate = isToday(date);
   return (
-    <div className="date-element">
+    <div className={`date-element ${isCurrentDate ? "current-date" : ""}`}>
       {index < 7 && <div>{days[getDay(date)]}</div>}
       {getDate(date) === 1 ? (
         <div style={{ marginTop: 5 }}>

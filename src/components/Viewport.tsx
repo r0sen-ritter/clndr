@@ -4,7 +4,7 @@ import DateElement from "./DateElement";
 import generateDates from "../utils/DateProcessor";
 
 const Viewport = () => {
-  const dates = generateDates(2024, 3, 0);
+  const dates = generateDates(2024, 1, 0);
   return (
     <div className="viewport wrapper">
       {dates.map((date, index) => {

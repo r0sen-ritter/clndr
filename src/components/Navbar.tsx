@@ -1,8 +1,34 @@
 import React from "react";
 import "./Navbar.css";
 
-const Navbar = () => {
-  return <div className="navbar">Navbar</div>;
+interface NavbarProps {
+  currentMonth: number;
+  currentYear: number;
+}
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const Navbar: React.FC<NavbarProps> = ({ currentMonth, currentYear }) => {
+  return (
+    <div className="navbar">
+      <div className="current-month">
+        {months[currentMonth]} {currentYear}
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;
