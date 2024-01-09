@@ -27,6 +27,7 @@ body {
   text-align: center;
   padding: 5px;
   grid-row: 2;
+  width: 200px;
 }
 .btn {
   text-align: center;

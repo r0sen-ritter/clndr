@@ -3,12 +3,12 @@ import Navbar from "./components/Navbar";
 import Leftbar from "./components/Leftbar";
 import Viewport from "./components/Viewport";
 import Rightbar from "./components/Rightbar";
-import "./App.css";
 import { useState } from "react";
+import { startOfMonth } from "date-fns";
+import "./App.css";
 
 const App = () => {
-  const [month, setMonth] = useState(0);
-  const [year, setYear] = useState(2024);
+  const [date, setDate] = useState<Date>(startOfMonth(new Date()));
 
   return (
     <>
@@ -21,7 +21,7 @@ const App = () => {
             justifyContent: "center",
           }}
         >
-          <Navbar currentMonth={month} currentYear={year} />
+          <Navbar date={date} setDate={setDate} />
         </div>
 
         <div
@@ -32,7 +32,7 @@ const App = () => {
           }}
         >
           <Leftbar />
-          <Viewport />
+          <Viewport year={date.getFullYear()} month={date.getMonth()} />
           <Rightbar />
         </div>
       </div>

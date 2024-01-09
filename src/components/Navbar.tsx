@@ -2,40 +2,31 @@ import React from "react";
 import "./Navbar.css";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
+import { addMonths, subMonths, format } from "date-fns";
 
 interface NavbarProps {
-  currentMonth: number;
-  currentYear: number;
+  date: Date;
+  setDate: (date: Date) => void;
 }
 
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+const Navbar: React.FC<NavbarProps> = ({ date, setDate }) => {
+  const clickBackHandler = () => {
+    setDate(subMonths(date, 1));
+  };
+  const clickForwardHandler = () => {
+    setDate(addMonths(date, 1));
+  };
 
-const Navbar: React.FC<NavbarProps> = ({ currentMonth, currentYear }) => {
   return (
     <div className="navbar">
-      <div className="current-month">
-        {months[currentMonth]} {currentYear}
-      </div>
+      <div className="current-month">{format(date, "MMMM yyyy")}</div>
       <div className="section">
-        <button className="btn">
+        <button className="btn" onClick={clickBackHandler}>
           <FaChevronLeft />
         </button>
       </div>
       <div className="section">
-        <button className="btn">
+        <button className="btn" onClick={clickForwardHandler}>
           <FaChevronRight />
         </button>
       </div>
