@@ -1,4 +1,3 @@
-import React from "react";
 import "./Weekdaybar.css";
 
 const Weekdaybar = () => {
