@@ -1,7 +1,7 @@
 import React from "react";
 import "./DateElement.css";
-import { getDay, getDate, getMonth, isToday } from "date-fns";
 
+import { getDay, getDate, getMonth, isToday } from "date-fns";
 interface DateElementProps {
   date: Date;
   index: number;
