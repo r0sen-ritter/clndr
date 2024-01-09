@@ -13,14 +13,13 @@ body {
   padding: 0 20px;
   box-sizing: border-box;
   width: 75%;
-  justify-content: space-between;
   color: white;
   border-radius: 10px;
   margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 2px;
-  justify-items: center;
+  display: flex;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 2px;
+  grid-auto-rows: 1fr;
 }
 .current-month {
   font-size: 1.5rem;
@@ -28,4 +27,33 @@ body {
   text-align: center;
   padding: 5px;
   grid-row: 2;
+}
+.btn {
+  text-align: center;
+  padding: 5px;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  height: fit-content;
+  width: fit-content;
+  outline: none;
+  border: none;
+}
+.section {
+  margin-left: 10px;
+  padding: 5px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  justify-items: space-between;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  height: 35px;
+  transition: 0.5s;
+  border: 1px solid transparent;
+}
+.section:hover {
+  border-color: blanchedalmond;
+  border-style: solid;
+  transform: scale(1.03);
 }
