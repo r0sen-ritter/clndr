@@ -32,13 +32,6 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
   };
 
   function confirmModal() {
-    // const newEventList = [...eventList];
-    // newEventList.push({
-    //   name: eventName,
-    //   startDate: startDate,
-    //   endDate: endDate,
-    // });
-
     setEventList((previousEvents) => {
       previousEvents.push({
         name: eventName,
@@ -47,8 +40,6 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
       });
       return previousEvents;
     });
-    console.log(eventList);
-
     closeModal();
   }
 
@@ -64,6 +55,7 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
             openModal={openModal}
             setStartDate={setStartDate}
             setEndDate={setEndDate}
+            eventList={eventList}
           />
         );
       })}
