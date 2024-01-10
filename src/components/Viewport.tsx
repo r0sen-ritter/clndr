@@ -1,7 +1,7 @@
 import React from "react";
-import "./Viewport.css";
 import DateElement from "./DateElement";
 import generateDates from "../utils/DateProcessor";
+import "./Viewport.css";
 
 interface ViewportProps {
   year: number;

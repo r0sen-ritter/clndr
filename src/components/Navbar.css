@@ -35,8 +35,8 @@ body {
   background-color: transparent;
   color: white;
   border-radius: 5px;
-  height: fit-content;
-  width: fit-content;
+  height: 40px;
+  width: 30px;
   outline: none;
   border: none;
 }
