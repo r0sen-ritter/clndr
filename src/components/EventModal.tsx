@@ -5,23 +5,20 @@ import { ReactNode } from "react";
 import "./EventModal.css";
 import "react-datepicker/dist/react-datepicker.css";
 
-const EventModal = () => {
-  const [modalIsOpen, setIsOpen] = useState(true);
+interface EventModalProps {
+  modalIsOpen: boolean;
+  closeModal: () => void;
+  confirmModal: () => void;
+}
+
+const EventModal: React.FC<EventModalProps> = ({
+  modalIsOpen,
+  closeModal,
+  confirmModal,
+}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [eventName, setEventName] = useState("");
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function confirmModal() {
-    closeModal();
-  }
 
   const PopperContainer = ({ children }: { children: ReactNode }) => {
     return <div className="date-picker-popper">{children}</div>;
@@ -29,7 +26,6 @@ const EventModal = () => {
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

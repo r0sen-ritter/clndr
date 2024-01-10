@@ -4,23 +4,14 @@ import Viewport from "./components/Viewport";
 import Rightbar from "./components/Rightbar";
 import { useState } from "react";
 import { startOfMonth } from "date-fns";
-import EventModal from "./components/EventModal";
 import "./App.css";
-
-interface EventList {
-  name: string;
-  startDate: Date;
-  endDate: Date;
-}
 
 const App = () => {
   const [date, setDate] = useState<Date>(startOfMonth(new Date()));
-  const [eventList, setEventList] = useState<EventList[]>([]);
 
   return (
     <>
       <div className="app-bg">
-        <EventModal />
         <div
           style={{
             display: "flex",

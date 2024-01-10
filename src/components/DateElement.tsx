@@ -5,6 +5,7 @@ import "./DateElement.css";
 interface DateElementProps {
   date: Date;
   index: number;
+  openModal: () => void;
 }
 
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -23,10 +24,17 @@ let months = [
   "Dec",
 ];
 
-const DateElement: React.FC<DateElementProps> = ({ date, index }) => {
+const DateElement: React.FC<DateElementProps> = ({
+  date,
+  index,
+  openModal,
+}) => {
   const isCurrentDate = isToday(date);
   return (
-    <div className={`date-element ${isCurrentDate ? "current-date" : ""}`}>
+    <div
+      className={`date-element ${isCurrentDate ? "current-date" : ""}`}
+      onClick={openModal}
+    >
       {index < 7 && <div>{days[getDay(date)]}</div>}
       {getDate(date) === 1 ? (
         <div style={{ marginTop: 5 }}>
