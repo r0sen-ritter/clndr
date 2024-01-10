@@ -19,6 +19,9 @@ interface EventList {
 const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const [eventList, setEventList] = useState<EventList[]>([]);
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [endDate, setEndDate] = useState<Date>(new Date());
+  const [eventName, setEventName] = useState<string>("");
 
   const openModal = () => {
     setIsOpen(true);
@@ -29,6 +32,23 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
   };
 
   function confirmModal() {
+    // const newEventList = [...eventList];
+    // newEventList.push({
+    //   name: eventName,
+    //   startDate: startDate,
+    //   endDate: endDate,
+    // });
+
+    setEventList((previousEvents) => {
+      previousEvents.push({
+        name: eventName,
+        startDate: startDate,
+        endDate: endDate,
+      });
+      return previousEvents;
+    });
+    console.log(eventList);
+
     closeModal();
   }
 
@@ -37,13 +57,26 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
   return (
     <div className="viewport wrapper">
       {dates.map((date, index) => {
-        return <DateElement date={date} index={index} openModal={openModal} />;
+        return (
+          <DateElement
+            date={date}
+            index={index}
+            openModal={openModal}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+          />
+        );
       })}
       {modalIsOpen === true && (
         <EventModal
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}
           confirmModal={confirmModal}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+          setEventName={setEventName}
         />
       )}
     </div>

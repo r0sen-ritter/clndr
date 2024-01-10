@@ -1,5 +1,4 @@
 import Modal from "react-modal";
-import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { ReactNode } from "react";
 import "./EventModal.css";
@@ -9,17 +8,23 @@ interface EventModalProps {
   modalIsOpen: boolean;
   closeModal: () => void;
   confirmModal: () => void;
+  startDate: Date;
+  setStartDate: (date: Date) => void;
+  endDate: Date;
+  setEndDate: (date: Date) => void;
+  setEventName: (name: string) => void;
 }
 
 const EventModal: React.FC<EventModalProps> = ({
   modalIsOpen,
   closeModal,
   confirmModal,
+  startDate,
+  setStartDate,
+  endDate,
+  setEndDate,
+  setEventName,
 }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [eventName, setEventName] = useState("");
-
   const PopperContainer = ({ children }: { children: ReactNode }) => {
     return <div className="date-picker-popper">{children}</div>;
   };
@@ -31,11 +36,11 @@ const EventModal: React.FC<EventModalProps> = ({
         onRequestClose={closeModal}
         className="Modal"
         overlayClassName="Overlay"
+        ariaHideApp={false}
       >
         <h2>Add New Event</h2>
         <input
           type="text"
-          value={eventName}
           onChange={(e) => setEventName(e.target.value)}
           placeholder="Event Name"
           className="input-field"
@@ -46,6 +51,7 @@ const EventModal: React.FC<EventModalProps> = ({
             onChange={(date: Date) => setStartDate(date)}
             className="date-picker"
             popperContainer={PopperContainer}
+            dateFormat="PP"
           />
           <DatePicker
             selected={endDate}
@@ -53,6 +59,7 @@ const EventModal: React.FC<EventModalProps> = ({
             className="date-picker"
             popperClassName="date-picker-popper"
             popperContainer={PopperContainer}
+            dateFormat="PP"
           />
         </div>
         <div className="section-modal">
