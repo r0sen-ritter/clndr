@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import "./ShowEventsModal.css";
 import { format } from "date-fns";
+import { MdOutlineEvent } from "react-icons/md";
 
 interface EventRecord {
   name: string;
@@ -29,10 +30,21 @@ const ShowEventsModal: React.FC<ShowEventsModalProps> = ({
         ariaHideApp={false}
       >
         <div>
+          <h2>Events Today</h2>
           {currentEventsList.map((event, index) => (
             <div key={index} className="section-modal-events">
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <h4 style={{ color: "blanchedalmond" }}>{event.name}</h4>
+                <div>
+                  <MdOutlineEvent
+                    style={{
+                      color: "blanchedalmond",
+                      scale: "200%",
+                      marginTop: 10,
+                    }}
+                  />
+                  <h4 style={{ color: "blanchedalmond" }}>{event.name}</h4>
+                </div>
+
                 <div>Start Date: {format(event.startDate, "MMMM d, yyyy")}</div>
                 <div>End Date: {format(event.endDate, "MMMM d, yyyy")}</div>
               </div>
