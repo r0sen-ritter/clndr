@@ -63,6 +63,7 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
         },
       ]);
       setEventName("");
+      setEventDescription("");
       closeAddEventModal();
     }
   }
