@@ -1,87 +1,47 @@
 import Modal from "react-modal";
-import DatePicker from "react-datepicker";
-import { ReactNode } from "react";
-import "./AddEventModal.css";
-import "react-datepicker/dist/react-datepicker.css";
-import { CiCalendar } from "react-icons/ci";
+import "./ShowEventsModal.css";
+import { format } from "date-fns";
 
-interface EventModalProps {
-  modalIsOpen: boolean;
-  closeModal: () => void;
-  confirmModal: () => void;
+interface EventRecord {
+  name: string;
   startDate: Date;
-  setStartDate: (date: Date) => void;
   endDate: Date;
-  setEndDate: (date: Date) => void;
-  setEventName: (name: string) => void;
 }
 
-const EventModal: React.FC<EventModalProps> = ({
-  modalIsOpen,
-  closeModal,
-  confirmModal,
-  startDate,
-  setStartDate,
-  endDate,
-  setEndDate,
-  setEventName,
-}) => {
-  const PopperContainer = ({ children }: { children: ReactNode }) => {
-    return <div className="date-picker-popper">{children}</div>;
-  };
+interface ShowEventsModalProps {
+  currentEventsList: EventRecord[];
+  ShowEventsModalIsOpen: boolean;
+  closeShowEventsModal: () => void;
+}
 
+const ShowEventsModal: React.FC<ShowEventsModalProps> = ({
+  currentEventsList,
+  ShowEventsModalIsOpen,
+  closeShowEventsModal,
+}) => {
   return (
     <div>
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        className="Modal"
+        isOpen={ShowEventsModalIsOpen}
+        onRequestClose={closeShowEventsModal}
+        className="Modal-show-events"
         overlayClassName="Overlay"
         ariaHideApp={false}
       >
-        <h2>Add New Event</h2>
-        <input
-          type="text"
-          onChange={(e) => setEventName(e.target.value)}
-          placeholder="Event Name"
-          className="input-field"
-        />
-        <div className="date-picker-wrapper">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <DatePicker
-              selected={startDate}
-              onChange={(date: Date) => setStartDate(date)}
-              className="date-picker"
-              popperContainer={PopperContainer}
-              dateFormat="PP"
-            />
-            <CiCalendar style={{ marginLeft: 15, color: "blanchedalmond" }} />
-          </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <DatePicker
-              selected={endDate}
-              onChange={(date: Date) => setEndDate(date)}
-              className="date-picker"
-              popperClassName="date-picker-popper"
-              popperContainer={PopperContainer}
-              dateFormat="PP"
-            />
-            <CiCalendar style={{ marginLeft: 15, color: "blanchedalmond" }} />
-          </div>
-        </div>
-        <div className="section-modal">
-          <button className="btn-modal" onClick={closeModal}>
-            Close
-          </button>
-        </div>
-        <div className="section-modal">
-          <button className="btn-modal" onClick={confirmModal}>
-            Confirm
-          </button>
+        <div>
+          {currentEventsList.map((event, index) => (
+            <div key={index} className="section-modal-events">
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <h4 style={{ color: "blanchedalmond" }}>{event.name}</h4>
+                <div>Start Date: {format(event.startDate, "MMMM d, yyyy")}</div>
+                <div>End Date: {format(event.endDate, "MMMM d, yyyy")}</div>
+              </div>
+            </div>
+          ))}
         </div>
       </Modal>
     </div>
   );
 };
 
-export default EventModal;
+export default ShowEventsModal;

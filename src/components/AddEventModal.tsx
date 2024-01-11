@@ -6,9 +6,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { CiCalendar } from "react-icons/ci";
 
 interface EventModalProps {
-  modalIsOpen: boolean;
-  closeModal: () => void;
-  confirmModal: () => void;
+  AddEventModalIsOpen: boolean;
+  closeAddEventModal: () => void;
+  confirmAddEventModal: () => void;
   startDate: Date;
   setStartDate: (date: Date) => void;
   endDate: Date;
@@ -17,9 +17,9 @@ interface EventModalProps {
 }
 
 const EventModal: React.FC<EventModalProps> = ({
-  modalIsOpen,
-  closeModal,
-  confirmModal,
+  AddEventModalIsOpen,
+  closeAddEventModal,
+  confirmAddEventModal,
   startDate,
   setStartDate,
   endDate,
@@ -33,8 +33,8 @@ const EventModal: React.FC<EventModalProps> = ({
   return (
     <div>
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={AddEventModalIsOpen}
+        onRequestClose={closeAddEventModal}
         className="Modal"
         overlayClassName="Overlay"
         ariaHideApp={false}
@@ -70,12 +70,12 @@ const EventModal: React.FC<EventModalProps> = ({
           </div>
         </div>
         <div className="section-modal">
-          <button className="btn-modal" onClick={closeModal}>
+          <button className="btn-modal" onClick={closeAddEventModal}>
             Close
           </button>
         </div>
         <div className="section-modal">
-          <button className="btn-modal" onClick={confirmModal}>
+          <button className="btn-modal" onClick={confirmAddEventModal}>
             Confirm
           </button>
         </div>

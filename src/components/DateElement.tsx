@@ -11,7 +11,8 @@ interface EventRecord {
 interface DateElementProps {
   date: Date;
   index: number;
-  openModal: () => void;
+  openAddEventModal: () => void;
+  openShowEventsModal: (foundEvents: EventRecord[]) => void;
   setStartDate: (date: Date) => void;
   setEndDate: (date: Date) => void;
   eventList: EventRecord[];
@@ -36,7 +37,8 @@ let months = [
 const DateElement: React.FC<DateElementProps> = ({
   date,
   index,
-  openModal,
+  openAddEventModal,
+  openShowEventsModal,
   setStartDate,
   setEndDate,
   eventList,
@@ -57,11 +59,12 @@ const DateElement: React.FC<DateElementProps> = ({
   const addEventHandler = () => {
     setStartDate(date);
     setEndDate(date);
-    openModal();
+    openAddEventModal();
   };
 
-  const showEventsHandler = () => {
-    alert(foundEvents.map((event) => event.name).join("\n"));
+  const showEventsHandler = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    openShowEventsModal(foundEvents);
   };
 
   return (

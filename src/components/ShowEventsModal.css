@@ -1,4 +1,4 @@
-.Modal {
+.Modal-show-events {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -7,13 +7,14 @@
   outline: none;
   padding: 20px;
   width: 80%;
-  height: 50%;
-  max-width: 500px;
+  height: 70%;
+  max-width: 600px;
   max-height: 500px;
   background-color: #252d38;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   box-sizing: border-box;
   border-radius: 10px;
+  overflow: scroll;
 }
 
 .Overlay {
@@ -24,76 +25,31 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
+  overflow: scroll;
 }
-.input-field {
-  background-color: #252d38;
-  border: none;
-  color: blanchedalmond;
-  padding: 5px;
-  outline: none;
-  width: 100%;
-  height: 30px;
-  margin-bottom: 10px;
-  text-align: center;
-  border-bottom: 1px solid blanchedalmond;
-}
-.date-picker {
-  background-color: #252d38;
-  border: none;
-  color: blanchedalmond;
-  padding: 5px;
-  outline: none;
-  width: 100%;
-  height: 30px;
-  margin-bottom: 10px;
-  text-align: center;
-  border-bottom: 1px solid blanchedalmond;
-}
-.date-picker-wrapper {
-  background-color: #252d38;
-  margin: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-.date-picker-popper {
-  position: absolute;
-  z-index: 9999999;
-  background-color: #252d38;
-}
-.btn-modal {
-  text-align: center;
-  padding: 5px;
-  background-color: transparent;
-  color: white;
-  border-radius: 5px;
-  height: 35px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  border: none;
-  outline: none;
-}
-.section-modal {
-  margin-left: 50px;
+
+.section-modal-events {
+  margin-left: 60px;
   padding: 5px;
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   justify-items: space-between;
   border-radius: 10px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  height: 35px;
+  height: auto;
   width: 75%;
   transition: 0.5s;
   border: 1px solid transparent;
+  text-align: center;
 }
-.section-modal:hover {
+.section-modal-events:hover {
   border-color: blanchedalmond;
   border-style: solid;
   transform: scale(1.03);
 }
-.section-modal:active {
+.section-modal-events:active {
   transform: scale(0.95);
   background-color: rgb(25, 29, 31);
 }

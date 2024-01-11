@@ -1,6 +1,7 @@
 import React from "react";
 import DateElement from "./DateElement";
 import AddEventModal from "./AddEventModal";
+import ShowEventsModal from "./ShowEventsModal";
 import generateDates from "../utils/DateProcessor";
 import { useState } from "react";
 import "./Viewport.css";
@@ -17,30 +18,50 @@ interface EventRecord {
 }
 
 const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
-  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [AddEventModalIsOpen, setAddEventModalIsOpen] =
+    useState<boolean>(false);
+  const [ShowEventsModalIsOpen, setShowEventsModalIsOpen] =
+    useState<boolean>(false);
+
   const [eventList, setEventList] = useState<EventRecord[]>([]);
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date>(new Date());
   const [eventName, setEventName] = useState<string>("");
+  const [currentEventList, setCurrentEventList] = useState<EventRecord[]>([]);
 
-  const openModal = () => {
-    setIsOpen(true);
+  const openAddEventModal = () => {
+    setAddEventModalIsOpen(true);
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
+  const closeAddEventModal = () => {
+    setAddEventModalIsOpen(false);
   };
 
-  function confirmModal() {
-    setEventList((previousEvents) => {
-      previousEvents.push({
-        name: eventName,
-        startDate: startDate,
-        endDate: endDate,
-      });
-      return previousEvents;
-    });
-    closeModal();
+  const openShowEventsModal = (foundEvents: EventRecord[]) => {
+    setCurrentEventList(foundEvents);
+    setShowEventsModalIsOpen(true);
+  };
+
+  const closeShowEventsModal = () => {
+    setShowEventsModalIsOpen(false);
+  };
+
+  function confirmAddEventModal() {
+    if (eventName === "") {
+      alert("Please enter an event name");
+      return;
+    } else {
+      setEventList((previousEvents) => [
+        ...previousEvents,
+        {
+          name: eventName,
+          startDate: startDate,
+          endDate: endDate,
+        },
+      ]);
+      setEventName("");
+      closeAddEventModal();
+    }
   }
 
   const dates = generateDates(year, month + 1, 0);
@@ -52,7 +73,8 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
           <DateElement
             date={date}
             index={index}
-            openModal={openModal}
+            openAddEventModal={openAddEventModal}
+            openShowEventsModal={openShowEventsModal}
             setStartDate={setStartDate}
             setEndDate={setEndDate}
             eventList={eventList}
@@ -60,16 +82,23 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
           />
         );
       })}
-      {modalIsOpen === true && (
+      {AddEventModalIsOpen === true && (
         <AddEventModal
-          modalIsOpen={modalIsOpen}
-          closeModal={closeModal}
-          confirmModal={confirmModal}
+          AddEventModalIsOpen={AddEventModalIsOpen}
+          closeAddEventModal={closeAddEventModal}
+          confirmAddEventModal={confirmAddEventModal}
           startDate={startDate}
           setStartDate={setStartDate}
           endDate={endDate}
           setEndDate={setEndDate}
           setEventName={setEventName}
+        />
+      )}
+      {ShowEventsModalIsOpen === true && (
+        <ShowEventsModal
+          ShowEventsModalIsOpen={ShowEventsModalIsOpen}
+          closeShowEventsModal={closeShowEventsModal}
+          currentEventsList={currentEventList}
         />
       )}
     </div>
