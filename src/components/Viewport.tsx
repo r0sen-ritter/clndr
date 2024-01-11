@@ -10,7 +10,7 @@ interface ViewportProps {
   month: number;
 }
 
-interface EventList {
+interface EventRecord {
   name: string;
   startDate: Date;
   endDate: Date;
@@ -18,7 +18,7 @@ interface EventList {
 
 const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
-  const [eventList, setEventList] = useState<EventList[]>([]);
+  const [eventList, setEventList] = useState<EventRecord[]>([]);
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date>(new Date());
   const [eventName, setEventName] = useState<string>("");
@@ -56,6 +56,7 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
             setStartDate={setStartDate}
             setEndDate={setEndDate}
             eventList={eventList}
+            key={index}
           />
         );
       })}

@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import { ReactNode } from "react";
 import "./EventModal.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { CiCalendar } from "react-icons/ci";
 
 interface EventModalProps {
   modalIsOpen: boolean;
@@ -46,21 +47,27 @@ const EventModal: React.FC<EventModalProps> = ({
           className="input-field"
         />
         <div className="date-picker-wrapper">
-          <DatePicker
-            selected={startDate}
-            onChange={(date: Date) => setStartDate(date)}
-            className="date-picker"
-            popperContainer={PopperContainer}
-            dateFormat="PP"
-          />
-          <DatePicker
-            selected={endDate}
-            onChange={(date: Date) => setEndDate(date)}
-            className="date-picker"
-            popperClassName="date-picker-popper"
-            popperContainer={PopperContainer}
-            dateFormat="PP"
-          />
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <DatePicker
+              selected={startDate}
+              onChange={(date: Date) => setStartDate(date)}
+              className="date-picker"
+              popperContainer={PopperContainer}
+              dateFormat="PP"
+            />
+            <CiCalendar style={{ marginLeft: 15, color: "blanchedalmond" }} />
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <DatePicker
+              selected={endDate}
+              onChange={(date: Date) => setEndDate(date)}
+              className="date-picker"
+              popperClassName="date-picker-popper"
+              popperContainer={PopperContainer}
+              dateFormat="PP"
+            />
+            <CiCalendar style={{ marginLeft: 15, color: "blanchedalmond" }} />
+          </div>
         </div>
         <div className="section-modal">
           <button className="btn-modal" onClick={closeModal}>

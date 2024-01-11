@@ -2,7 +2,7 @@ import React from "react";
 import { getDay, getDate, getMonth, isToday, isWithinInterval } from "date-fns";
 import "./DateElement.css";
 
-interface EventList {
+interface EventRecord {
   name: string;
   startDate: Date;
   endDate: Date;
@@ -14,7 +14,7 @@ interface DateElementProps {
   openModal: () => void;
   setStartDate: (date: Date) => void;
   setEndDate: (date: Date) => void;
-  eventList: EventList[];
+  eventList: EventRecord[];
 }
 
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -53,6 +53,13 @@ const DateElement: React.FC<DateElementProps> = ({
     isWithinInterval(date, { start: event.startDate, end: event.endDate })
   );
 
+  const eventData = eventList.find((event) => {
+    return isWithinInterval(date, {
+      start: event.startDate,
+      end: event.endDate,
+    });
+  });
+
   return (
     <div
       className={`date-element ${isCurrentDate ? "current-date" : ""}`}
@@ -66,7 +73,7 @@ const DateElement: React.FC<DateElementProps> = ({
       ) : (
         <div>{getDate(date)}</div>
       )}
-      {isEventDate && <div className="event-indicator"></div>}
+      {isEventDate && <div className="event-indicator">Has Event</div>}
     </div>
   );
 };

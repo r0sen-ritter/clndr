@@ -3,6 +3,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { TbCurrentLocation } from "react-icons/tb";
 import { addMonths, subMonths, format, startOfMonth } from "date-fns";
+import { IoCalendarOutline } from "react-icons/io5";
 import "./Navbar.css";
 
 interface NavbarProps {
@@ -23,7 +24,14 @@ const Navbar: React.FC<NavbarProps> = ({ date, setDate }) => {
 
   return (
     <div className="navbar">
-      <div className="current-month">{format(date, "MMMM yyyy")}</div>
+      <IoCalendarOutline
+        style={{ marginRight: 15, color: "blanchedalmond", scale: "200%" }}
+      />
+      <h2 style={{ color: "blanchedalmond" }}>Calendar</h2>
+      <div className="section">
+        <div className="current-month">{format(date, "MMMM yyyy")}</div>
+      </div>
+
       <div className="section">
         <button className="btn" onClick={clickBackHandler}>
           <FaChevronLeft />
