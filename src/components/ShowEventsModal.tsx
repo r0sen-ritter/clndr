@@ -44,9 +44,19 @@ const ShowEventsModal: React.FC<ShowEventsModalProps> = ({
                   />
                   <h4 style={{ color: "blanchedalmond" }}>{event.name}</h4>
                 </div>
-
-                <div>Start Date: {format(event.startDate, "MMMM d, yyyy")}</div>
-                <div>End Date: {format(event.endDate, "MMMM d, yyyy")}</div>
+                {event.startDate === event.endDate ? (
+                  <div>Event is Today</div>
+                ) : (
+                  <>
+                    <div style={{ margin: "5px" }}>
+                      Start Date: {format(event.startDate, "MMMM d, yyyy")}{" "}
+                      (Today)
+                    </div>
+                    <div style={{ margin: "5px" }}>
+                      End Date: {format(event.endDate, "MMMM d, yyyy")}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           ))}
