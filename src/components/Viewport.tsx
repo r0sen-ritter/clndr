@@ -49,7 +49,7 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
   };
 
   function confirmAddEventModal() {
-    if (eventName === "") {
+    if (eventName.trim() === "") {
       alert("Please enter an event name");
       return;
     } else {
