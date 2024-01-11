@@ -5,6 +5,7 @@ import { MdOutlineEvent } from "react-icons/md";
 
 interface EventRecord {
   name: string;
+  description: string;
   startDate: Date;
   endDate: Date;
 }
@@ -42,17 +43,19 @@ const ShowEventsModal: React.FC<ShowEventsModalProps> = ({
                       marginTop: 10,
                     }}
                   />
-                  <h4 style={{ color: "blanchedalmond" }}>{event.name}</h4>
+                  <h3 style={{ color: "blanchedalmond", margin: "0" }}>
+                    {event.name}
+                  </h3>
                 </div>
+                <div style={{ margin: "10px" }}>{event.description}</div>
                 {event.startDate === event.endDate ? (
-                  <div>Event is Today</div>
+                  <div style={{ color: "blanchedalmond" }}>Event is Today</div>
                 ) : (
                   <>
                     <div style={{ margin: "5px" }}>
-                      Start Date: {format(event.startDate, "MMMM d, yyyy")}{" "}
-                      (Today)
+                      Start Date: {format(event.startDate, "MMMM d, yyyy")}
                     </div>
-                    <div style={{ margin: "5px" }}>
+                    <div style={{ margin: "5px", color: "blanchedalmond" }}>
                       End Date: {format(event.endDate, "MMMM d, yyyy")}
                     </div>
                   </>

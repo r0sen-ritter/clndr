@@ -13,6 +13,7 @@ interface ViewportProps {
 
 interface EventRecord {
   name: string;
+  description: string;
   startDate: Date;
   endDate: Date;
 }
@@ -27,6 +28,7 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date>(new Date());
   const [eventName, setEventName] = useState<string>("");
+  const [eventDescription, setEventDescription] = useState<string>("");
   const [currentEventList, setCurrentEventList] = useState<EventRecord[]>([]);
 
   const openAddEventModal = () => {
@@ -55,6 +57,7 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
         ...previousEvents,
         {
           name: eventName,
+          description: eventDescription,
           startDate: startDate,
           endDate: endDate,
         },
@@ -92,6 +95,7 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
           endDate={endDate}
           setEndDate={setEndDate}
           setEventName={setEventName}
+          setEventDescription={setEventDescription}
         />
       )}
       {ShowEventsModalIsOpen === true && (

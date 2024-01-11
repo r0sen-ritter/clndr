@@ -4,6 +4,7 @@ import "./DateElement.css";
 
 interface EventRecord {
   name: string;
+  description: string;
   startDate: Date;
   endDate: Date;
 }

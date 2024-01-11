@@ -5,7 +5,7 @@ import "./AddEventModal.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { CiCalendar } from "react-icons/ci";
 
-interface EventModalProps {
+interface AddEventModalProps {
   AddEventModalIsOpen: boolean;
   closeAddEventModal: () => void;
   confirmAddEventModal: () => void;
@@ -14,9 +14,10 @@ interface EventModalProps {
   endDate: Date;
   setEndDate: (date: Date) => void;
   setEventName: (name: string) => void;
+  setEventDescription: (description: string) => void;
 }
 
-const EventModal: React.FC<EventModalProps> = ({
+const AddEventModal: React.FC<AddEventModalProps> = ({
   AddEventModalIsOpen,
   closeAddEventModal,
   confirmAddEventModal,
@@ -25,6 +26,7 @@ const EventModal: React.FC<EventModalProps> = ({
   endDate,
   setEndDate,
   setEventName,
+  setEventDescription,
 }) => {
   const PopperContainer = ({ children }: { children: ReactNode }) => {
     return <div className="date-picker-popper">{children}</div>;
@@ -44,6 +46,12 @@ const EventModal: React.FC<EventModalProps> = ({
           type="text"
           onChange={(e) => setEventName(e.target.value)}
           placeholder="Event Name"
+          className="input-field"
+        />
+        <input
+          type="text"
+          onChange={(e) => setEventDescription(e.target.value)}
+          placeholder="Add Description"
           className="input-field"
         />
         <div className="date-picker-wrapper">
@@ -84,4 +92,4 @@ const EventModal: React.FC<EventModalProps> = ({
   );
 };
 
-export default EventModal;
+export default AddEventModal;
