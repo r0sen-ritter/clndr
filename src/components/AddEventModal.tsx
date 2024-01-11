@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import DatePicker from "react-datepicker";
 import { ReactNode } from "react";
-import "./EventModal.css";
+import "./AddEventModal.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { CiCalendar } from "react-icons/ci";
 

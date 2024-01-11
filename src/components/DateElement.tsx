@@ -43,27 +43,31 @@ const DateElement: React.FC<DateElementProps> = ({
 }) => {
   const isCurrentDate = isToday(date);
 
-  const onClickhandler = () => {
-    setStartDate(date);
-    setEndDate(date);
-    openModal();
-  };
-
   const isEventDate = eventList.some((event) =>
     isWithinInterval(date, { start: event.startDate, end: event.endDate })
   );
 
-  const eventData = eventList.find((event) => {
+  const foundEvents = eventList.filter((event) => {
     return isWithinInterval(date, {
       start: event.startDate,
       end: event.endDate,
     });
   });
 
+  const addEventHandler = () => {
+    setStartDate(date);
+    setEndDate(date);
+    openModal();
+  };
+
+  const showEventsHandler = () => {
+    alert(foundEvents.map((event) => event.name).join("\n"));
+  };
+
   return (
     <div
       className={`date-element ${isCurrentDate ? "current-date" : ""}`}
-      onClick={onClickhandler}
+      onClick={addEventHandler}
     >
       {index < 7 && <div>{days[getDay(date)]}</div>}
       {getDate(date) === 1 ? (
@@ -73,7 +77,13 @@ const DateElement: React.FC<DateElementProps> = ({
       ) : (
         <div>{getDate(date)}</div>
       )}
-      {isEventDate && <div className="event-indicator">Has Event</div>}
+      {isEventDate && (
+        <div className="event-indicator" onClick={showEventsHandler}>
+          {foundEvents.length > 1
+            ? `Has ${foundEvents.length} Events`
+            : "Has 1 Event"}
+        </div>
+      )}
     </div>
   );
 };

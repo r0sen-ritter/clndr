@@ -56,4 +56,8 @@ body {
   align-items: center;
   justify-content: center;
   justify-items: center;
+  transition: 0.5s;
+}
+.event-indicator:hover {
+  transform: scale(1.1);
 }

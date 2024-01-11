@@ -1,6 +1,6 @@
 import React from "react";
 import DateElement from "./DateElement";
-import EventModal from "./EventModal";
+import AddEventModal from "./AddEventModal";
 import generateDates from "../utils/DateProcessor";
 import { useState } from "react";
 import "./Viewport.css";
@@ -61,7 +61,7 @@ const Viewport: React.FC<ViewportProps> = ({ year, month }) => {
         );
       })}
       {modalIsOpen === true && (
-        <EventModal
+        <AddEventModal
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}
           confirmModal={confirmModal}

@@ -24,10 +24,18 @@ const Navbar: React.FC<NavbarProps> = ({ date, setDate }) => {
 
   return (
     <div className="navbar">
-      <IoCalendarOutline
-        style={{ marginRight: 15, color: "blanchedalmond", scale: "200%" }}
-      />
-      <h2 style={{ color: "blanchedalmond" }}>Calendar</h2>
+      <div className="section">
+        <IoCalendarOutline
+          style={{
+            marginRight: 15,
+            marginLeft: 7,
+            color: "blanchedalmond",
+            scale: "200%",
+          }}
+        />
+        <h2 style={{ color: "blanchedalmond" }}>CLNDR</h2>
+      </div>
+
       <div className="section">
         <div className="current-month">{format(date, "MMMM yyyy")}</div>
       </div>
