@@ -40,17 +40,17 @@ const Navbar: React.FC<NavbarProps> = ({ date, setDate }) => {
         <div className="current-month">{format(date, "MMMM yyyy")}</div>
       </div>
 
-      <div className="section">
+      <div>
         <button className="btn" onClick={clickBackHandler}>
           <FaChevronLeft />
         </button>
       </div>
-      <div className="section">
+      <div>
         <button className="btn" onClick={clickForwardHandler}>
           <FaChevronRight />
         </button>
       </div>
-      <div className="section">
+      <div>
         <button className="btn" onClick={clickTodayHandler}>
           <TbCurrentLocation />
         </button>

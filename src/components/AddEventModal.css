@@ -73,6 +73,7 @@
   justify-items: center;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 .section-modal {
   margin-left: 50px;
